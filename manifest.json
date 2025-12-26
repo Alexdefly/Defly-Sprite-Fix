@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Defly.io Tools",
+  "version": "1.0",
+  "description": "Defly.io sprite editor fix + seasonal sprite override",
+
+  "content_scripts": [
+    {
+      "matches": ["https://defly.io/*"],
+      "js": ["disable-seasonal.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://defly.io/?skin-editor*"],
+      "js": ["Defly Sprite Fix v5.6.user.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
