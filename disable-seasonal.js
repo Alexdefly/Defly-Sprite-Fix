@@ -1,6 +1,14 @@
+// disable-seasonal.js
 (() => {
-  const realGetMonth = Date.prototype.getMonth;
-  Date.prototype.getMonth = function () {
-    return 6; // July (no seasonal sprites)
-  };
+    const script = document.createElement('script');
+    script.textContent = `
+        const RealDate = Date;
+        class FakeDate extends RealDate {
+            constructor(...args) { super(...args); }
+            getMonth() { return 6; } // July
+        }
+        window.Date = FakeDate;
+    `;
+    document.documentElement.appendChild(script);
+    script.remove();
 })();
